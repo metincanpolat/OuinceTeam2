@@ -37,13 +37,21 @@ public class GWD {
         Logger.getLogger("").setLevel(Level.SEVERE);
         System.setProperty(org.slf4j.simple.SimpleLogger.DEFAULT_LOG_LEVEL_KEY, "Error");
 
+        if (threadBrowserName.get() == null)  // diğer testlerimizi direk çalıştırırken, XML den parametre gelmeyeceği için
+            threadBrowserName.set("chrome");  // default olarak chrome atandı
+
+
         if (threadDriver.get() == null) { // Şu andaki yani bu thread deki driver ım boş mu ?
             //driverı start et doldur, başlat ve gönder
 
             switch (threadBrowserName.get() )
             {
+                case "chrome":
+                    WebDriverManager.chromedriver().setup();
+                    threadDriver.set(new ChromeDriver()); // bu threade bir webdriver atanıyor
+                    break;
+
                 case "firefox":
-                    //System.setProperty(FirefoxDriver.SystemProperty.BROWSER_LOGFILE,"/dev/null");
                     WebDriverManager.firefoxdriver().setup();
                     threadDriver.set(new FirefoxDriver());
                     break;
@@ -54,17 +62,11 @@ public class GWD {
                     break;
 
                 case "edge":
-                    //System.setProperty(EdgeDriverService.EDGE_DRIVER_SILENT_OUTPUT_PROPERTY,"true");
                     WebDriverManager.edgedriver().setup();
                     threadDriver.set(new EdgeDriver());
                     break;
-                default: // diğer testlerimizi direk çalıştırırken, XML den parametre gelmeyeceği için default olarak chrome atandı
-                    //System.setProperty(ChromeDriverService.CHROME_DRIVER_SILENT_OUTPUT_PROPERTY, "true");
-                    WebDriverManager.chromedriver().setup();
-                    threadDriver.set(new ChromeDriver()); // bu threade bir webdriver atanıyor
             }
         }
-
         return threadDriver.get();
     }
 

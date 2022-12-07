@@ -7,18 +7,17 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Parameters;
 
 @CucumberOptions(
-        tags = "@Regression",
+        tags = "@Regression", // hangi senaryolarda bu etiket varsa onlar çalışacak
+        //and yazılırsa hem smoke hem de regression olanları çalıştırıyor.
         features = {"src/test/java/FeatureFiles"},
         glue = {"StepDefinitions"}
 )
-public class _09_TestRunnerParallel extends AbstractTestNGCucumberTests {
+public class _00_TestRunnerLogin extends AbstractTestNGCucumberTests {
 
     @BeforeClass
     @Parameters("browser")
     public void beforeClass(String browser)
     {
-        // borwser türünü GWD ye gönder
-        GWD.setThreadBrowserName(browser);
+        GWD.setThreadBrowserName(browser); // browser türünü GWD ye gönder
     }
-
 }

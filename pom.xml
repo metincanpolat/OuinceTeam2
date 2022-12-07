@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>org.example</groupId>
-    <artifactId>Cucumber_Kursu4</artifactId>
+    <artifactId>Cucumber</artifactId>
     <version>1.0-SNAPSHOT</version>
 
     <properties>
@@ -15,76 +15,65 @@
     </properties>
 
     <dependencies>
-
         <dependency>
             <groupId>org.seleniumhq.selenium</groupId>
             <artifactId>selenium-java</artifactId>
             <version>4.5.0</version>
         </dependency>
-
         <dependency>
             <groupId>io.cucumber</groupId>
             <artifactId>cucumber-java</artifactId>
             <version>7.9.0</version>
-            <scope>test</scope>
+            <scope>test</scope>   <!--bunu sonradan ekledik-->
         </dependency>
-
         <dependency>
             <groupId>org.testng</groupId>
             <artifactId>testng</artifactId>
             <version>6.8.7</version>
             <scope>test</scope>
         </dependency>
-
         <dependency>
             <groupId>io.cucumber</groupId>
             <artifactId>cucumber-testng</artifactId>
             <version>7.9.0</version>
-            <scope>test</scope>
+            <scope>test</scope>   <!--bunu sonradan ekledik-->
         </dependency>
-
         <dependency>
             <groupId>io.github.bonigarcia</groupId>
             <artifactId>webdrivermanager</artifactId>
             <version>5.3.1</version>
         </dependency>
-
         <dependency>
+            <!--            çalıştırınca çıkan SLFJ4 uyarılarını kaldırdık. Bu bir log tutma-->
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-api</artifactId>
             <version>1.8.0-beta2</version>
         </dependency>
-
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-simple</artifactId>
             <version>1.8.0-beta2</version>
             <scope>test</scope>
         </dependency>
-
         <dependency>
+            <!--            random sayı ve text üretmek için ekledik-->
             <groupId>org.apache.poi</groupId>
             <artifactId>poi</artifactId>
             <version>4.1.0</version>
         </dependency>
-
         <dependency>
             <groupId>tech.grasshopper</groupId>
             <artifactId>extentreports-cucumber7-adapter</artifactId>
             <version>1.9.2</version>
         </dependency>
-
         <dependency>
             <groupId>net.masterthought</groupId>
             <artifactId>cucumber-reporting</artifactId>
             <version>5.7.4</version>
         </dependency>
-
     </dependencies>
-
     <build>
         <plugins>
-
             <plugin><!--derlemek için-->
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
@@ -97,13 +86,10 @@
                     <testFailureIgnore>true</testFailureIgnore>
                 </configuration>
             </plugin>
-
-
             <plugin>
                 <groupId>net.masterthought</groupId>
                 <artifactId>maven-cucumber-reporting</artifactId>
-                <version>2.8.0</version>
-
+                <version>5.0.0</version>
                 <executions>
                     <execution>
                         <id>execution</id>
@@ -112,15 +98,16 @@
                             <goal>generate</goal>
                         </goals>
                         <configuration>
-                            <projectName>Project Name</projectName>
+                            <projectName>Cucumber HTML Reports</projectName>
                             <outputDirectory>${project.build.directory}/Report/cucumber-reports</outputDirectory>
-                            <cucumberOutput>${project.build.directory}/cucumber/cucumber.json</cucumberOutput>
-                            <skippedFails>true</skippedFails>
+                            <inputDirectory>${project.build.directory}</inputDirectory>
+                            <jsonFiles>
+                                <param>**/cucumber*.json</param>
+                            </jsonFiles>
                         </configuration>
                     </execution>
                 </executions>
             </plugin>
-
         </plugins>
     </build>
 
