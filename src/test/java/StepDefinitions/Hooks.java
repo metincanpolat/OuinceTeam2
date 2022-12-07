@@ -20,7 +20,7 @@ public class Hooks {
     {
         System.out.println("Senaryo başladı");
     }
-
+//deneme
     @After
     public void after (Scenario senaryo)
     {
