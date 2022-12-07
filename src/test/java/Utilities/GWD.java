@@ -47,11 +47,13 @@ public class GWD {
             switch (threadBrowserName.get() )
             {
                 case "chrome":
+                    System.setProperty(ChromeDriverService.CHROME_DRIVER_SILENT_OUTPUT_PROPERTY, "true"); // Chrome uyarılarılarını kaldırmak için
                     WebDriverManager.chromedriver().setup();
                     threadDriver.set(new ChromeDriver()); // bu threade bir webdriver atanıyor
                     break;
 
                 case "firefox":
+                    System.setProperty(FirefoxDriver.SystemProperty.BROWSER_LOGFILE,"/dev/null");
                     WebDriverManager.firefoxdriver().setup();
                     threadDriver.set(new FirefoxDriver());
                     break;

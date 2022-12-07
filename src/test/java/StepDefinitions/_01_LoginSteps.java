@@ -17,28 +17,22 @@ public class _01_LoginSteps {
     @Given("Naviagate to Campus")
     public void naviagateToCampus() {
 
-        GWD.getDriver().get("https://demo.mersys.io/");
+        GWD.getDriver().get("https://campus.techno.study/");
         GWD.getDriver().manage().window().maximize();
     }
 
     @When("Enter username and password and click Login button")
     public void enterUsernameAndPasswordAndClickLoginButton() {
-//        WebDriverWait wait=new WebDriverWait(GWD.getDriver(), Duration.ofSeconds(30));
-//        wait.until(ExpectedConditions.visibilityOf(dc.username));
-//        dc.username.sendKeys("richfield.edu");
-//
-//        dc.password.sendKeys("Richfield2020!");
-//        dc.loginButton.click();
 
-        dc.findAndSend("username", "richfield.edu");
-        dc.findAndSend("password", "Richfield2020!");
+
+        dc.findAndSend("username", "username");
+        dc.findAndSend("password", "password");
         dc.findAndClick("loginButton");
     }
 
     @Then("User should login successfuly")
     public void userShouldLoginSuccessfuly() {
         dc.findAndContainsText("txtTechnoStudy","Techno Study");
-        // TODO : accept kapatılacak
         dc.findAndClick("acceptCookies");
     }
 

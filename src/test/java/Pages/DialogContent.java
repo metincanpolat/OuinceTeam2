@@ -21,8 +21,11 @@ public class DialogContent extends Parent {
     @FindBy(css = "button[aria-label='LOGIN']")
     private WebElement loginButton;
 
-    @FindBy(css = "span[class='mat-tooltip-trigger logo-text']")
+    @FindBy(className = "logo-text")
     private WebElement txtTechnoStudy;
+
+    @FindBy(xpath = "//button[text()='Accept all cookies']")
+    private WebElement acceptCookies;
 
 
 
@@ -47,9 +50,8 @@ public class DialogContent extends Parent {
     public void findAndClick(String strlement) {
         //element get :burda string isimden weblemente ulaşıcam
         switch (strlement) {
-            case "loginButton":
-                myElement = loginButton;
-                break;
+            case "loginButton":myElement = loginButton;break;
+            case "acceptCookies": myElement = acceptCookies;break;
 
         }
 
