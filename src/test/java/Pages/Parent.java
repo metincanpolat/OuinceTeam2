@@ -61,7 +61,3 @@ public class Parent {
     }
 
 }
-
-// case sensitive, stringin bir parçası olabilir
-//wait.until(ExpectedCondition.textToBePresentInElement(By,"Looking4TextOnElement");//This verifies if text is present on element By.
-//wait.until(ExpectedCondition.textToBePresentInElementValue(By,"Looking4TextOnValueAttribute");//This verifies if text is present in value attribute of element By.
